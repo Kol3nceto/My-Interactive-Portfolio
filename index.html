@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Лично портфолио с интерактивен учебен план."
+    />
+    <title>Моето интерактивно портфолио</title>
+
+    <!-- Sets the saved theme before the page is painted (prevents a flash) -->
+    <script src="scripts/theme-init.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="scripts/app.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <h1>Моето портфолио</h1>
+      <button id="theme-toggle" class="btn" type="button">
+        🌙 Тъмна тема
+      </button>
+    </header>
+
+    <main class="container">
+      <!-- 1. Personal introduction -->
+      <section class="card" aria-labelledby="about-title">
+        <h2 id="about-title">Здравей, аз съм Никола</h2>
+
+        <p>
+          Интересувам се от програмирането и от създаването на неща, които
+          хората могат да използват. Първоначално бях започнах с HTML и CSS, както и основи на JavaScript, гледах видеа от YouTube и се учих да програмирам като цяло. Имам стар уебсайт проект, в който мога да играя "Камък, ножица, хартия" срещу генерирани ходове от компютъра. След това започнахме да изучаваме C# в училище и от тогава не съм се занимавал особено с уебсайтове и JavaScript ми остана неизучен. Бих казал, че имам добро ниво на C# като съм се опитвал и да си създавам малки игри чрез Unity и да науча самия софтуер. Имам и добро ниво на Английски език, което ми помага да разуча много по-дълбоко информация за програмирането, защото има много повече източници. Нещо друго, което мога е да си намирам информация от интернет без ИИ
+        </p>
+        <p>
+          <strong>Защо искам да участвам в стажа:</strong> искам да уча в
+          реална среда, да получавам обратна връзка и да превърна наученото в
+          готови проекти.
+        </p>
+
+        <h3>Какво вече умея</h3>
+        <ul class="bullets">
+          <li>
+            C# на средно ниво: променливи, условия, цикли и класове.
+          </li>
+          <li>
+            Направих първото си WinForms приложение – списък със задачи.
+          </li>
+          <li>Основи на HTML, CSS и JavaScript – с тази страница.</li>
+        </ul>
+
+        <h3>Три неща, които искам да науча</h3>
+        <div class="grid">
+          <article class="item">
+            <h4>1. JavaScript</h4>
+            <p class="muted">
+              <strong>Първа стъпка:</strong> всеки ден по 30 минути упражнения работа с DOM и други части на езика.
+            </p>
+          </article>
+          <article class="item">
+            <h4>2. Git и GitHub</h4>
+            <p class="muted">
+              <strong>Първа стъпка:</strong> да създам хранилище и да кача проект, да науча основите на софтуера.
+            </p>
+          </article>
+          <article class="item">
+            <h4>3. Адаптивен CSS</h4>
+            <p class="muted">
+              <strong>Първа стъпка:</strong> да направя различни страници и да експериментирам с дизайна.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2. Interactive learning plan -->
+      <section class="card" aria-labelledby="plan-title">
+        <h2 id="plan-title">Интерактивен учебен план</h2>
+
+        <form id="goal-form" class="goal-form" novalidate>
+          <input
+            id="goal-input"
+            type="text"
+            maxlength="120"
+            placeholder="Нова учебна цел…"
+            aria-label="Нова учебна цел"
+            autocomplete="off"
+          />
+          <button class="btn btn-primary" type="submit">Добави</button>
+        </form>
+        <p id="form-message" class="form-message" role="alert"></p>
+
+        <!-- 4. Progress -->
+        <div class="stats" aria-live="polite">
+          <div>
+            <strong id="stat-total">0</strong>
+            <span class="muted">общо цели</span>
+          </div>
+          <div>
+            <strong id="stat-done">0</strong>
+            <span class="muted">завършени</span>
+          </div>
+          <div>
+            <strong id="stat-percent">0%</strong>
+            <span class="muted">изпълнение</span>
+          </div>
+        </div>
+        <div
+          id="progress"
+          class="progress"
+          role="progressbar"
+          aria-label="Напредък"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span id="progress-fill"></span>
+        </div>
+
+        <div class="filters" role="group" aria-label="Филтър на целите">
+          <button class="btn" type="button" data-filter="all" aria-pressed="true">
+            Всички
+          </button>
+          <button class="btn" type="button" data-filter="active" aria-pressed="false">
+            Активни
+          </button>
+          <button class="btn" type="button" data-filter="completed" aria-pressed="false">
+            Завършени
+          </button>
+        </div>
+
+        <ul id="goal-list" class="goal-list"></ul>
+        <p id="empty-message" class="empty muted" hidden></p>
+      </section>
+    </main>
+
+    <footer class="site-footer muted">
+      Данните се пазят само в този браузър.
+    </footer>
+
+    <!-- Delete confirmation -->
+    <dialog id="confirm-dialog">
+      <p id="confirm-text"></p>
+      <div class="dialog-actions">
+        <button id="confirm-no" class="btn" type="button">Отказ</button>
+        <button id="confirm-yes" class="btn btn-danger" type="button">
+          Изтрий
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>
